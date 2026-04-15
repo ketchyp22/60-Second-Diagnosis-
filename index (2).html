@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Угадай диагноз за 60 секунд</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ФОНОВОЕ ВИДЕО -->
+<div id="video-bg">
+  <video autoplay muted loop playsinline>
+    <source src="8944419-hd_1920_1080_25fps.mp4" type="video/mp4">
+  </video>
+  <div id="video-overlay"></div>
+</div>
+
+<div id="app">
+
+  <div id="screen-start" class="screen">
+    <div class="logo-icon">🩺</div>
+    <div>
+      <h1 class="app-title">
+        Угадай диагноз
+        <span>за 60 сек</span>
+      </h1>
+      <p class="app-subtitle">
+        На экране — клиническая задача. Выбери правильный диагноз пока не истёк таймер.
+      </p>
+    </div>
+    <div class="start-stats">
+      <div class="stat-item">
+        <span class="stat-value">60</span>
+        <span class="stat-label">секунд</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value" id="total-questions">—</span>
+        <span class="stat-label">вопросов</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">10</span>
+        <span class="stat-label">за ответ</span>
+      </div>
+    </div>
+    <button class="btn btn-primary" id="btn-start">Начать игру</button>
+  </div>
+
+  <div id="screen-game" class="screen">
+    <div class="game-header">
+      <div class="game-progress-info">
+        Вопрос <span id="progress-current">1</span> / <span id="progress-total">15</span>
+      </div>
+      <div class="timer-wrap">
+        <span class="timer-icon">⏱</span>
+        <span id="timer-display">60</span>
+      </div>
+    </div>
+    <div class="timer-bar-track">
+      <div id="timer-bar"></div>
+    </div>
+    <div class="scenario-card">
+      <div class="scenario-label">📋 Клиническая задача</div>
+      <p id="scenario-text"></p>
+    </div>
+    <div class="options-grid" id="options-container"></div>
+    <div class="explanation-box" id="explanation-box">
+      <p id="explanation-text"></p>
+    </div>
+    <div class="game-footer">
+      <div class="score-live" id="score-live">Счёт: <span>0</span></div>
+      <div style="display:flex; gap:10px;">
+        <button class="btn btn-ghost" id="btn-skip">Пропустить →</button>
+        <button class="btn btn-secondary" id="btn-next" style="display:none;">Далее →</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="screen-result" class="screen">
+    <div class="result-icon" id="result-icon">🏆</div>
+    <h2 class="result-title" id="result-title">Результат</h2>
+    <div class="result-score-block">
+      <div class="result-score-number" id="result-score">0</div>
+      <div class="result-score-label">очков</div>
+    </div>
+    <div class="result-stats">
+      <div class="result-stat">
+        <span class="result-stat-value correct" id="result-correct">0</span>
+        <span class="result-stat-label">Верно</span>
+      </div>
+      <div class="result-stat">
+        <span class="result-stat-value wrong" id="result-wrong">0</span>
+        <span class="result-stat-label">Неверно</span>
+      </div>
+      <div class="result-stat">
+        <span class="result-stat-value skipped" id="result-skipped">0</span>
+        <span class="result-stat-label">Пропущено</span>
+      </div>
+    </div>
+    <p class="result-grade" id="result-grade"></p>
+    <div class="result-buttons">
+      <button class="btn btn-primary" id="btn-play-again">Играть снова</button>
+      <button class="btn btn-secondary" id="btn-to-menu">В меню</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="questions.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
